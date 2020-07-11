@@ -66,7 +66,7 @@ namespace Infrastructure
         public User GetByID(string id)
         {
             var res = user.Find(e => e.id == id);
-            return res.FirstOrDefault();
+            return res.CountDocuments() > 0 ? res.FirstOrDefault() : null;
         }
 
         //public User GetByID(string id, string userid)

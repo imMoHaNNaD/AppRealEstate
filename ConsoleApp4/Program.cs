@@ -51,12 +51,12 @@ namespace ConsoleApp4
 
                 //  //});
                 var r = Check(true);
-                r.Bind(Check(true));
-                var re = r.Match(
-                  Left: l => $"Invalid value: {l}",
-                  Right: r => $"The result is: {r}");
+          ////      r.Bind(Check(true));
+          //      var re = r.Match(
+          //        Left: l =>l.Map((a)=>"",""),
+          //        Right: r => $"The result is: {r}");
               
-                Console.WriteLine(re);
+                //Console.WriteLine(re);
                 advertisement.Add(new Advertisement
                 {
                     title = "",

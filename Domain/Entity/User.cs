@@ -2,6 +2,7 @@
 using MongoDB.Bson.Serialization.Attributes;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 namespace Domain.Entity
@@ -15,6 +16,7 @@ namespace Domain.Entity
         public string phone { get; set; }
         public string email { get; set; }
         public string password { get; set; }
+        [DefaultValue("User")]
         public string type { get; set; }
         public List<Token> tokens { get; set; } = new List<Token>();
     }
