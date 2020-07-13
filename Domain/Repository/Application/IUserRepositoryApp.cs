@@ -11,9 +11,7 @@ namespace Domain.Repository.Application
     {
         Either<UserServicesStatus, string> GetContactinfo(string id);
         Either<UserServicesStatus, bool> Validaion(string token);
-        Either<UserServicesStatus, Token> Login(string email, string password);
-        Either<UserServicesStatus, bool> Logout(string token);
-        Either<UserServicesStatus, bool> LogoutAll(string token);
+    
         //Either<UserServicesStatus, Token> CreateToken(Token token, string userID);
         Either<UserServicesStatus, bool> CreateUser(User user);
         Either<UserServicesStatus, bool> DeleteUser(string id);

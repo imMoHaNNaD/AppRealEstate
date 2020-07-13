@@ -6,7 +6,7 @@ namespace Domain.Core.Status
 {
     public enum  UserServicesStatus
     {
-        OK = 0,
+        OK = 200,
         Cancelled = 1,
         UnknownError = 2,
         Unauthenticated = 3,

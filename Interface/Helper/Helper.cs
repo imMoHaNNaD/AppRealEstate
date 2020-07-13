@@ -19,7 +19,7 @@ namespace Interface.Helper
               {
                   status = new Status
                   {
-                      statusCode = "",
+                      statusCode = ((int)l).ToString(),
                       statusMessage = l.ToString()
                   },
 
@@ -29,8 +29,8 @@ namespace Interface.Helper
               {
                   status = new Status
                   {
-                      statusCode = "200",
-                      statusMessage = "Ok"
+                      statusCode = ((int)UserServicesStatus.OK).ToString(),
+                      statusMessage = UserServicesStatus.OK.ToString()
                   },
                   body = map.Map<D>(r)
               }

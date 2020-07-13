@@ -13,10 +13,7 @@ namespace Domain.Repository
         bool Update(T val);
         IEnumerable<T> GetAll();
         bool Add(T val);
-        //T GetByID(string id , string userid);
-        //bool DeleteByID(string id, string userid);
-        //bool Update(T val, string userid);
-        //IEnumerable<T> GetAll(string userid);
+       
     
     }
 }

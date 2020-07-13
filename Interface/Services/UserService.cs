@@ -9,20 +9,22 @@ using Interface.Message;
 using Interface.Model.User;
 using Interface.Helper;
 using Interface.ViewModel.User;
+using Domain.Repository.Application;
 
 namespace Interface
 {
     public class UserService
     {
         private readonly IMapper _mapper;
-        private UserApp userApp = new UserApp();
+        private readonly IUserRepositoryApp userApp;
         public UserService(IMapper mapper)
         {
             _mapper = mapper;
+            userApp = new UserApp();
         }
 
        public BaseResponse<bool> CreateUser(UserCreateModel req) {
-
+          
           var map = _mapper.Map<User>(req);
           var res=  userApp.CreateUser(map);
             return Helper<bool, bool>.MapToBase(res, _mapper);

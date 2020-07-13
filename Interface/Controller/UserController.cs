@@ -8,6 +8,7 @@ using Interface.Message;
 using Interface.Model;
 using Interface.Model.User;
 using Interface.ViewModel.User;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -16,6 +17,7 @@ namespace Interface
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class UserController : ControllerBase
     {
         private readonly UserService _service;
@@ -45,6 +47,7 @@ namespace Interface
         //}
 
         // POST api/<UserController>
+
         [HttpPost]
         public BaseResponse<bool> Post(UserCreateModel req)
         {
@@ -79,8 +82,8 @@ namespace Interface
             return _service.GetByIDUser(id);
 
         }
-
-        [HttpGet]
+        
+        [HttpGet("Users")]
         public BaseResponse<List<UserVm>> Get()
         {
             return _service.GetUser();

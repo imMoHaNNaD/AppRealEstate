@@ -7,6 +7,7 @@ using Interface.Message;
 using Interface.Model.AD;
 using Interface.Services;
 using Interface.ViewModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -15,6 +16,7 @@ namespace Interface.Controller
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class AdController : ControllerBase
     {
         private readonly AdService _service;

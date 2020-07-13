@@ -11,11 +11,12 @@ using Domain.Repository;
 using System.Linq;
 using System.IdentityModel.Tokens.Jwt;
 using Application.NewFolder;
+using Application.UseCase;
 
 namespace Application.User
 {
 
-  public  class UserApp : IUserRepositoryApp
+  public  class UserApp : IUserRepositoryApp,IAutApp
     {
 
         private IUserRepository _userServices= new UserDB();
@@ -86,7 +87,7 @@ namespace Application.User
             return res.ToList();
         }
 
-        public Either<UserServicesStatus, Token> Login(string email, string password)
+        public Either<UserServicesStatus, string> Login(string email, string password)
         {
             var res = _userServices.Login(email);
             if (res.IsNull()){
@@ -95,14 +96,8 @@ namespace Application.User
             if (password != res.password) {
                 return UserServicesStatus.WrongUserNameOrPassword;
             }
-          
-            Token token = new Token { token = Class1.GenerateToken(res) };
-        
-            var CreateToken = _userServices.CreateToken(token, res.id);
-            if (!CreateToken)
-            {
-                return UserServicesStatus.ServicesFailed;
-            }
+
+            var token = TokenManger.GenerateToken(res.id);
 
             return token;
         }
@@ -125,6 +120,16 @@ namespace Application.User
                 return UserServicesStatus.ServicesFailed;
             }
             return res;
+        }
+
+        public Either<UserServicesStatus, bool> ValadtionToken(string token)
+        {
+         var Validate =  TokenManger.ValidateCurrentToken(token);
+
+            if (Validate) {
+                return true;
+            }
+          return  UserServicesStatus.Unauthenticated;
         }
 
         public Either<UserServicesStatus, bool> Validaion(string token)

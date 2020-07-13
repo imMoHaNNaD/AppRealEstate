@@ -11,6 +11,7 @@ using Domain.Entity;
 using Interface.Helper;
 using Interface.ViewModel;
 using System.ComponentModel.DataAnnotations;
+using Domain.Repository.Application;
 
 namespace Interface.Services
 {
@@ -18,10 +19,11 @@ namespace Interface.Services
     {
 
         private readonly IMapper _mapper;
-        private AdvertisementApp AdApp = new AdvertisementApp();
+        private readonly IAdvertisementRepositoryApp AdApp;
         public AdService(IMapper mapper)
         {
             _mapper = mapper;
+            AdApp = new AdvertisementApp();
         }
 
         public BaseResponse<bool> CreateAD(ADCreateModel req)
